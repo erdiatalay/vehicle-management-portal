@@ -1,5 +1,5 @@
 # Vehicle Management Portal
-This example app shows how to create a Spring Boot API and display its data with an Angular UI.
+This example app shows how to create a Spring Boot API which contains CRUD operations and display its data with an Angular UI.
 
 Here you can see technologies used.<br>
 <p><b>Server Side<b></p>
@@ -26,6 +26,7 @@ Here you can see technologies used.<br>
 **Prerequisites:** [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and [Node.js](https://nodejs.org/).
 
 * [Getting Started](#getting-started)
+* [Help](#help)
 
 ## Getting Started
 
