@@ -1,20 +1,28 @@
-<div class="container">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Brand</th>
-                <th>Model</th>
-                <th>Vehicle Type</th>
-                <th>Vin Number</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let vehicle of vehicles | async">
-                <td>{{vehicle.brand}}</td>
-                <td>{{vehicle.model}}</td>
-                <td>{{vehicle.vehicleType}}</td>
-                <td>{{vehicle.vinNumber}}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2>Vehicle List</h2>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Brand</th>
+                    <th>Vin Number</th>
+                    <th>Vehicle Type</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let vehicle of vehicles | async">
+                    <td>{{vehicle.brand}}</td>
+                    <td>{{vehicle.vinNumber}}</td>
+                    <td>{{vehicle.vehicleType}}</td>
+                    <td><button (click)="deleteVehicle(vehicle.id)" class="btn btn-danger">Delete</button>
+                        <button (click)="vehicleDetails(vehicle.id)" class="btn btn-info"
+                            style="margin-left: 10px">Details</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

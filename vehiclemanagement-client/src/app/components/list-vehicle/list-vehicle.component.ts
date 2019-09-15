@@ -21,4 +21,9 @@ export class ListVehicleComponent implements OnInit {
     this.vehicles = this.vehicleService.retrieveAllVehicles();
   }
 
+  deleteVehicle(id: number) {
+  }
+
+  vehicleDetails(id: number) {
+  }
 }
