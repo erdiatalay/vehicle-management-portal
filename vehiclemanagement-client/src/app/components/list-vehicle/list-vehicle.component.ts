@@ -22,6 +22,13 @@ export class ListVehicleComponent implements OnInit {
   }
 
   deleteVehicle(id: number) {
+    this.vehicleService.deleteVehicle(id)
+    .subscribe(
+      data => {
+        console.log(data);
+        this.reloadVehicleList();
+      },
+      error => console.log(error));
   }
 
   vehicleDetails(id: number) {
