@@ -13,12 +13,11 @@ export class ViewVehicleComponent implements OnInit {
   id: number;
   vehicle: Vehicle;
 
-  constructor(private vehicleService: VehicleService, private router: Router,
-    private route: ActivatedRoute) { }
+  constructor(private vehicleService: VehicleService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.vehicle = new Vehicle();
-    this.id = this.route.snapshot.params['id'];
+    this.id = this.route.snapshot.params.id;
 
     this.vehicleService.getVehicle(this.id).subscribe(
       data => {
@@ -32,4 +31,6 @@ export class ViewVehicleComponent implements OnInit {
     this.router.navigate(['/vehicles']);
   }
 
+  updateVehicle(id: number) {
+  }
 }
