@@ -31,7 +31,7 @@ public class VehicleControllerIntegrationTest
 
     private String getRootUrl()
     {
-        return "http://localhost:" + port;
+        return "http://localhost:" + port + "/api";
     }
 
     @Test
@@ -46,7 +46,7 @@ public class VehicleControllerIntegrationTest
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<String>(null, headers);
         ResponseEntity<String> response =
-                restTemplate.exchange(getRootUrl() + "/vehicle", HttpMethod.GET, entity, String.class);
+                restTemplate.exchange(getRootUrl() + "/vehicles", HttpMethod.GET, entity, String.class);
         assertNotNull(response.getBody());
     }
 

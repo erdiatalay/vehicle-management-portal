@@ -9,19 +9,39 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 @Entity
 @Table(name = "vehicle")
+@ApiModel(description = "All details about the Vehicle. ")
 public class Vehicle
 {
+    @ApiModelProperty(notes ="The database generated vehicle Id")
     private Long id;
+
+    @ApiModelProperty(notes ="The vehicle brand")
     private String brand;
+    
+    @ApiModelProperty(notes ="The vehicle model")
     private String model;
+    
+    @ApiModelProperty(notes ="The vehicle vehicle type")
     private String vehicleType;
+    
+    @ApiModelProperty(notes ="The vehicle plate country")
     private String plateCountry;
+    
+    @ApiModelProperty(notes ="The vehicle plate number")
     private String plateNumber;
+    
+    @ApiModelProperty(notes ="The vehicle identification number")
     private String vinNumber;
+    
+    @ApiModelProperty(notes ="The vehicle creation date")
     private Date creationDate;
+    
+    @ApiModelProperty(notes ="The vehicle manifactured country")
     private String manifacturedCountry;
 
     public Vehicle()

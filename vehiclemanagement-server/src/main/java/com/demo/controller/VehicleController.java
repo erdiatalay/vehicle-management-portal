@@ -18,23 +18,28 @@ import com.demo.exception.ResourceNotFoundException;
 import com.demo.model.Vehicle;
 import com.demo.repository.VehicleRepository;
 import com.demo.util.Constants;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import javassist.NotFoundException;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api")
+@Api(value = "Vehicle Management Portal", produces = "application/json")
 public class VehicleController
 {
 
     @Autowired
     private VehicleRepository vehicleRepository;
 
+    @ApiOperation(value = "Get all vehicles", response = List.class)
     @GetMapping(path = "/vehicles")
     public List<Vehicle> getAllVehicles()
     {
         return vehicleRepository.findAll();
     }
 
+    @ApiOperation(value = "Get a vehicle by Id")
     @GetMapping(path = "/vehicle/{id}")
     public ResponseEntity<Vehicle> getVehicleById(@PathVariable(value = "id") Long vehicleId)
             throws NotFoundException, ResourceNotFoundException
@@ -46,6 +51,7 @@ public class VehicleController
             .body(vehicle);
     }
 
+    @ApiOperation(value = "Add a vehicle")
     @PostMapping(path = "/vehicle")
     public ResponseEntity<Vehicle> createVehicle(@RequestBody Vehicle vehicle)
     {
@@ -56,6 +62,7 @@ public class VehicleController
                     .body(vehicleRepository.save(vehicle));
     }
 
+    @ApiOperation(value = "Update a vehicle")
     @PutMapping(path = "/vehicle/{id}")
     public ResponseEntity<Vehicle> updateVehicle(@PathVariable(value = "id") Long vehicleId,
             @RequestBody Vehicle updatedVehicle) throws ResourceNotFoundException
@@ -67,6 +74,7 @@ public class VehicleController
             .body(vehicleRepository.save(updatedVehicle));
     }
 
+    @ApiOperation(value = "Delete a vehicle")
     @DeleteMapping(path = "/vehicle/{id}")
     public Map<String, Boolean> deleteVehicle(@PathVariable(value = "id") Long vehicleId)
             throws ResourceNotFoundException
