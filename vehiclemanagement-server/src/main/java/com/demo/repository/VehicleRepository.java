@@ -7,5 +7,5 @@ import com.demo.model.Vehicle;
 @Repository
 public interface VehicleRepository extends JpaRepository<Vehicle, Long>
 {
-
+    public Vehicle findByVinNumber(String vinNum);
 }

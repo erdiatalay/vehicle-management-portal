@@ -49,8 +49,11 @@ public class VehicleController
     @PostMapping(path = "/vehicle")
     public ResponseEntity<Vehicle> createVehicle(@RequestBody Vehicle vehicle)
     {
-        return ResponseEntity.ok()
-            .body(vehicleRepository.save(vehicle));
+        // Check if VIN number exists, then save or throw error
+        return vehicleRepository.findByVinNumber(vehicle.getVinNumber()) != null ? ResponseEntity.badRequest()
+            .body(null)
+                : ResponseEntity.ok()
+                    .body(vehicleRepository.save(vehicle));
     }
 
     @PutMapping(path = "/vehicle/{id}")

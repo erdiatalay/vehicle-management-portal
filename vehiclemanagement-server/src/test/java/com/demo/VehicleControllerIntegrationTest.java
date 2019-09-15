@@ -75,7 +75,7 @@ public class VehicleControllerIntegrationTest
     }
 
     @Test
-    public void testUpdateEmployee()
+    public void testUpdateVehicle()
     {
         int id = 1;
         Vehicle vehicle = restTemplate.getForObject(getRootUrl() + "/vehicle/" + id, Vehicle.class);
@@ -92,7 +92,7 @@ public class VehicleControllerIntegrationTest
     }
 
     @Test
-    public void testDeleteEmployee()
+    public void testDeleteVehicle()
     {
         int id = 2;
         Vehicle vehicle = restTemplate.getForObject(getRootUrl() + "/vehicle/" + id, Vehicle.class);

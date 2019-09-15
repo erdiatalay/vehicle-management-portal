@@ -29,6 +29,20 @@ public class Vehicle
         // Default Empty Constructor
     }
 
+    public Vehicle(String brand, String model, String vehicleType, String plateCountry, String plateNumber,
+            String vinNumber, Date creationDate, String manifacturedCountry)
+    {
+        super();
+        this.brand = brand;
+        this.model = model;
+        this.vehicleType = vehicleType;
+        this.plateCountry = plateCountry;
+        this.plateNumber = plateNumber;
+        this.vinNumber = vinNumber;
+        this.creationDate = creationDate;
+        this.manifacturedCountry = manifacturedCountry;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId()
@@ -51,7 +65,7 @@ public class Vehicle
     {
         this.brand = brand;
     }
-    
+
     @Column(name = "model")
     public String getModel()
     {
@@ -96,7 +110,7 @@ public class Vehicle
         this.plateNumber = plateNumber;
     }
 
-    @Column(name = "vin_number")
+    @Column(name = "vin_number", unique = true)
     public String getVinNumber()
     {
         return vinNumber;
