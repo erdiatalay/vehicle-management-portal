@@ -14,9 +14,9 @@ import javax.persistence.TemporalType;
 @Table(name = "vehicle")
 public class Vehicle
 {
-
     private Long id;
     private String brand;
+    private String model;
     private String vehicleType;
     private String plateCountry;
     private String plateNumber;
@@ -50,6 +50,17 @@ public class Vehicle
     public void setBrand(String brand)
     {
         this.brand = brand;
+    }
+    
+    @Column(name = "model")
+    public String getModel()
+    {
+        return model;
+    }
+
+    public void setModel(String model)
+    {
+        this.model = model;
     }
 
     @Column(name = "vehicle_type")
