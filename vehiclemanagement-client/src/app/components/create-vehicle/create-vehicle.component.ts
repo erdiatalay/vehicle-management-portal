@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class CreateVehicleComponent implements OnInit {
 
- 
+
   vehicle: Vehicle = new Vehicle();
   submitted = false;
 

@@ -14,7 +14,7 @@ export class VehicleService {
     return this.http.get(`${API_URL}/vehicles/`);
   }
 
-  createVehicle(vehicle: Object): Observable<Object>{
+  createVehicle(vehicle: object): Observable<object> {
     return this.http.post(`${API_URL}/vehicle/`, vehicle);
   }
 }
