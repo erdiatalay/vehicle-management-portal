@@ -2,12 +2,3 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.footer {
-    text-align: center;
-    background: #137CF3;
-    color: white;
-    padding: 0;
-    position: absolute;
-    width:100%;
-}

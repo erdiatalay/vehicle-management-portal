@@ -9,6 +9,8 @@ import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle.com
 import { UpdateVehicleComponent } from './components/update-vehicle/update-vehicle.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MenuComponent } from './components/menu/menu.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
     CreateVehicleComponent,
     ListVehicleComponent,
     ViewVehicleComponent,
-    UpdateVehicleComponent
+    UpdateVehicleComponent,
+    MenuComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
