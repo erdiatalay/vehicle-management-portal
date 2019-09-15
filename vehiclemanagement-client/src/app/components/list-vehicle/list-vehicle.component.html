@@ -1,1 +1,20 @@
-<p>list-vehicle works!</p>
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Vehicle Type</th>
+                <th>Vin Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let vehicle of vehicles | async">
+                <td>{{vehicle.brand}}</td>
+                <td>{{vehicle.model}}</td>
+                <td>{{vehicle.vehicleType}}</td>
+                <td>{{vehicle.vinNumber}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

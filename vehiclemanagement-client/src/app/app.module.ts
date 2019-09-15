@@ -7,6 +7,8 @@ import { CreateVehicleComponent } from './components/create-vehicle/create-vehic
 import { ListVehicleComponent } from './components/list-vehicle/list-vehicle.component';
 import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle.component';
 import { UpdateVehicleComponent } from './components/update-vehicle/update-vehicle.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { UpdateVehicleComponent } from './components/update-vehicle/update-vehic
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
