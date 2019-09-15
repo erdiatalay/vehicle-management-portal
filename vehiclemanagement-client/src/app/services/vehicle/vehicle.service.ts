@@ -13,4 +13,8 @@ export class VehicleService {
   retrieveAllVehicles(): Observable<any> {
     return this.http.get(`${API_URL}/vehicles/`);
   }
+
+  createVehicle(vehicle: Object): Observable<Object>{
+    return this.http.post(`${API_URL}/vehicle/`, vehicle);
+  }
 }

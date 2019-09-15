@@ -1,1 +1,50 @@
-<p>create-vehicle works!</p>
+<h3>Create Vehicle</h3>
+<div [hidden]="submitted" style="width: 400px;">
+    <form (ngSubmit)="onSubmit()">
+        <fieldset class="form-group">
+            <input type="text" class="form-control" id="brand" required [(ngModel)]="vehicle.brand" name="brand"
+                placeholder="Brand">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <input type="text" class="form-control" id="model" required [(ngModel)]="vehicle.model" name="model"
+                placeholder="Model">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <input type="text" class="form-control" id="vehicleType" required [(ngModel)]="vehicle.vehicleType"
+                name="vehicleType" placeholder="Vehicle Type">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <input type="text" class="form-control" id="plateCountry" required [(ngModel)]="vehicle.plateCountry"
+                name="plateCountry" placeholder="Plate Country">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <input type="text" class="form-control" id="plateNumber" required [(ngModel)]="vehicle.plateNumber"
+                name="plateNumber" placeholder="Plate Number">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <input type="text" class="form-control" id="vinNumber" required [(ngModel)]="vehicle.vinNumber"
+                name="vinNumber" placeholder="VIN Number">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <input type="date" [ngModel]="vehicle.creationDate | date:'yyyy-MM-dd'" class="form-control"
+                [(ngModel)]="vehicle.creationDate" name="creationDate" placeholder="Creation Date">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <input type="text" class="form-control" id="manifacturedCountry" required
+                [(ngModel)]="vehicle.manifacturedCountry" name="manifacturedCountry" placeholder="Manifactured Country">
+        </fieldset>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+
+<div [hidden]="!submitted">
+    <h4>You submitted successfully!</h4>
+</div>
