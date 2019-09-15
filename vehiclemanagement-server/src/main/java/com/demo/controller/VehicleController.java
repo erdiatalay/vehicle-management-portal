@@ -1,9 +1,9 @@
 package com.demo.controller;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.demo.exception.ResourceNotFoundException;
 import com.demo.model.Vehicle;
 import com.demo.repository.VehicleRepository;
+import com.demo.util.Constants;
 import javassist.NotFoundException;
 
 @RestController
@@ -32,41 +34,45 @@ public class VehicleController
     }
 
     @GetMapping(path = "/vehicle/{id}")
-    public Vehicle getVehicleById(@PathVariable(value = "id") Long vehicleId) throws NotFoundException
+    public ResponseEntity<Vehicle> getVehicleById(@PathVariable(value = "id") Long vehicleId)
+            throws NotFoundException, ResourceNotFoundException
     {
-        Optional<Vehicle> vehicle = vehicleRepository.findById(vehicleId);
+        final Vehicle vehicle = vehicleRepository.findById(vehicleId)
+            .orElseThrow(() -> new ResourceNotFoundException(Constants.ERR_MSJ + vehicleId));
 
-        if (!vehicle.isPresent())
-            throw new NotFoundException("id-" + vehicleId);
-        return vehicle.get();
+        return ResponseEntity.ok()
+            .body(vehicle);
     }
 
     @PostMapping(path = "/vehicle")
-    public Vehicle createVehicle(@RequestBody Vehicle vehicle)
+    public ResponseEntity<Vehicle> createVehicle(@RequestBody Vehicle vehicle)
     {
-        return vehicleRepository.save(vehicle);
+        return ResponseEntity.ok()
+            .body(vehicleRepository.save(vehicle));
     }
 
     @PutMapping(path = "/vehicle/{id}")
     public ResponseEntity<Vehicle> updateVehicle(@PathVariable(value = "id") Long vehicleId,
-            @RequestBody Vehicle vehicle)
+            @RequestBody Vehicle updatedVehicle) throws ResourceNotFoundException
     {
-        Vehicle updatedVehicle = vehicleRepository.save(vehicle);
-        return new ResponseEntity<>(updatedVehicle, HttpStatus.OK);
+        final Vehicle vehicle = vehicleRepository.findById(vehicleId)
+            .orElseThrow(() -> new ResourceNotFoundException(Constants.ERR_MSJ + vehicleId));
+        vehicle.setId(updatedVehicle.getId());
+        return ResponseEntity.ok()
+            .body(vehicleRepository.save(updatedVehicle));
     }
 
     @DeleteMapping(path = "/vehicle/{id}")
-    public ResponseEntity<Void> deleteVehicle(@PathVariable(value = "id") Long vehicleId)
+    public Map<String, Boolean> deleteVehicle(@PathVariable(value = "id") Long vehicleId)
+            throws ResourceNotFoundException
     {
-        Optional<Vehicle> vehicle = vehicleRepository.findById(vehicleId);
-        if (vehicle.isPresent())
-        {
-            vehicleRepository.delete(vehicle.get());
-            return ResponseEntity.noContent()
-                .build();
-        }
-        return ResponseEntity.notFound()
-            .build();
+        Vehicle vehicle = vehicleRepository.findById(vehicleId)
+            .orElseThrow(() -> new ResourceNotFoundException(Constants.ERR_MSJ + vehicleId));
+
+        vehicleRepository.delete(vehicle);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put(Constants.DELETED, Boolean.TRUE);
+        return response;
     }
 
 }
