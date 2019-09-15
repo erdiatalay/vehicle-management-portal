@@ -7,16 +7,18 @@
             <thead>
                 <tr>
                     <th>Brand</th>
-                    <th>Vin Number</th>
+                    <th>Model</th>
                     <th>Vehicle Type</th>
+                    <th>Vin Number</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let vehicle of vehicles | async">
                     <td>{{vehicle.brand}}</td>
-                    <td>{{vehicle.vinNumber}}</td>
+                    <td>{{vehicle.model}}</td>
                     <td>{{vehicle.vehicleType}}</td>
+                    <td>{{vehicle.vinNumber}}</td>
                     <td><button (click)="deleteVehicle(vehicle.id)" class="btn btn-danger">Delete</button>
                         <button (click)="vehicleDetails(vehicle.id)" class="btn btn-info"
                             style="margin-left: 10px">Details</button>
