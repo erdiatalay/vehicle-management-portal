@@ -1,1 +1,33 @@
-<p>view-vehicle works!</p>
+<h2>Vehicle Details</h2>
+
+<hr />
+<div *ngIf="vehicle">
+    <div>
+        <label><b>Brand: </b></label> {{vehicle.brand}}
+    </div>
+    <div>
+        <label><b>Model: </b></label> {{vehicle.model}}
+    </div>
+    <div>
+        <label><b>Vehicle Type: </b></label> {{vehicle.vehicleType}}
+    </div>
+    <div>
+        <label><b>Plate Country: </b></label> {{vehicle.plateCountry}}
+    </div>
+    <div>
+        <label><b>Plate Number: </b></label> {{vehicle.plateNumber}}
+    </div>
+    <div>
+        <label><b>VIN Number: </b></label> {{vehicle.vinNumber}}
+    </div>
+    <div>
+        <label><b>Creation Date: </b></label> {{vehicle.creationDate}}
+    </div>
+    <div>
+        <label><b>Manifactured Country: </b></label> {{vehicle.manifacturedCountry}}
+    </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Vehicle List</button><br>

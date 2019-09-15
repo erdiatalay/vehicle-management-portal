@@ -17,8 +17,12 @@ export class VehicleService {
   createVehicle(vehicle: object): Observable<object> {
     return this.http.post(`${API_URL}/vehicle/`, vehicle);
   }
-      
+
   deleteVehicle(id: number): Observable<any> {
-    return this.http.delete(`${API_URL}/vehicle/${id}`);
+    return this.http.delete(`${API_URL}/vehicle/${id}`, { responseType: 'text' });
+  }
+
+  getVehicle(id: number): Observable<any> {
+    return this.http.get(`${API_URL}/vehicle/${id}`);
   }
 }
