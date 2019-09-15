@@ -32,5 +32,6 @@ export class ViewVehicleComponent implements OnInit {
   }
 
   updateVehicle(id: number) {
+    this.router.navigate(['/update', id]);
   }
 }

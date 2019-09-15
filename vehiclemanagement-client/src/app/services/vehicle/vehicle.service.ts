@@ -25,4 +25,8 @@ export class VehicleService {
   getVehicle(id: number): Observable<any> {
     return this.http.get(`${API_URL}/vehicle/${id}`);
   }
+
+  updateVehicle(id: number, value: any): Observable<any> {
+    return this.http.put(`${API_URL}/vehicle/${id}`, value);
+  }
 }

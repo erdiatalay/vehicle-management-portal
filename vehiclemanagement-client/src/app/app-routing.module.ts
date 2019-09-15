@@ -1,3 +1,4 @@
+import { UpdateVehicleComponent } from './components/update-vehicle/update-vehicle.component';
 import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle.component';
 import { ListVehicleComponent } from './components/list-vehicle/list-vehicle.component';
 import { NgModule } from '@angular/core';
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: 'vehicles', component: ListVehicleComponent },
   { path: 'add', component:  CreateVehicleComponent},
   { path: 'details/:id', component:  ViewVehicleComponent},
+  { path: 'update/:id', component:  UpdateVehicleComponent}
 ];
 
 @NgModule({
